@@ -1,0 +1,16 @@
+<!-- view_bookings.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Flight Bookings</h1>
+  <h2>Flight Number: {{ flight.flight_number }}</h2>
+  <ul>
+    {% for booking in bookings %}
+      <li>
+        User: {{ booking.user.username }}<br>
+        Seat Number: {{ booking.seat_number }}
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

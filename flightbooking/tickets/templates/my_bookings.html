@@ -1,0 +1,19 @@
+<!-- my_bookings.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>My Bookings</h1>
+  <ul>
+    {% for booking in bookings %}
+      <li>
+        Flight Number: {{ booking.flight.flight_number }}<br>
+        Departure City: {{ booking.flight.departure_city }}<br>
+        Destination City: {{ booking.flight.destination_city }}<br>
+        Departure Time: {{ booking.flight.departure_time }}<br>
+        Arrival Time: {{ booking.flight.arrival_time }}<br>
+        Seat Number: {{ booking.seat_number }}
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

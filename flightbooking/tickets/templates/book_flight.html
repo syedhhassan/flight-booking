@@ -1,0 +1,13 @@
+<!-- book_flight.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Book Flight</h1>
+  <form method="POST">
+    {% csrf_token %}
+    <label for="seat_number">Seat Number:</label>
+    <input type="number" id="seat_number" name="seat_number" min="1" max="{{ flight.seat_count }}">
+    <button type="submit">Book</button>
+  </form>
+{% endblock %}
