@@ -1,0 +1,26 @@
+<h2>Search Flights</h2>
+
+<form method="post">
+  {% csrf_token %}
+  <label for="date">Date:</label>
+  <input type="date" id="date" name="date" required>
+  <br>
+  <label for="time">Time:</label>
+  <input type="time" id="time" name="time" required>
+  <br>
+  <input type="submit" value="Search">
+</form>
+
+{% if flights %}
+  <h3>Flights:</h3>
+  <ul>
+    {% for flight in flights %}
+      <li>
+        Flight Number: {{ flight.number }}<br>
+        Departure Time: {{ flight.departure_time }}<br>
+        Available Seats: {{ flight.get_available_seats }}
+        <a href="{% url 'book_flight' flight.id %}">Book</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}

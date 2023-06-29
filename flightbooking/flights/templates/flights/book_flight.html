@@ -1,0 +1,9 @@
+<h2>Book Flight</h2>
+<p>Flight Details:</p>
+<p>Flight Number: {{ flight.number }}</p>
+<p>Departure Time: {{ flight.departure_time }}</p>
+
+<form method="post">
+  {% csrf_token %}
+  <input type="submit" value="Book">
+</form>
