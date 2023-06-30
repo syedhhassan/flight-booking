@@ -18,9 +18,9 @@ from django.contrib import admin
 from django.urls import path, include
 from tickets import views
 
+# URL patterns for the project
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', views.home),
-    path('tickets/', include('tickets.urls')),
+    path('admin/', admin.site.urls),  # Django admin URLs
+    path('', views.home),  # Home page
+    path('tickets/', include('tickets.urls')),  # Include URLs from the 'tickets' app
 ]
-

@@ -2,7 +2,7 @@ from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
-
+# Custom user model
 class User(AbstractUser):
     class Meta:
         swappable = 'AUTH_USER_MODEL'
@@ -25,7 +25,7 @@ class User(AbstractUser):
         verbose_name='user permissions',
     )
 
-
+# Flight model
 class Flight(models.Model):
     flight_number = models.CharField(max_length=20, unique=True)
     departure_city = models.CharField(max_length=100)
@@ -37,7 +37,7 @@ class Flight(models.Model):
     def __str__(self):
         return self.flight_number
 
-
+# Booking model
 class Booking(models.Model):
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,

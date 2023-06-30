@@ -5,9 +5,11 @@ from .models import Flight, Booking
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 
+# Home page view
 def home(request):
     return render(request, 'base.html')
 
+# User login view
 def user_login(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
@@ -23,6 +25,7 @@ def user_login(request):
     return render(request, 'login.html', {'form': form})
 
 
+# User signup view
 def user_signup(request):
     if request.method == 'POST':
         form = SignupForm(request.POST)
@@ -34,6 +37,7 @@ def user_signup(request):
     return render(request, 'signup.html', {'form': form})
 
 
+# Flight search view
 @login_required
 def flight_search(request):
     if request.method == 'POST':
@@ -48,6 +52,7 @@ def flight_search(request):
     return render(request, 'flight_search.html', {'form': form})
 
 
+# Book flight view
 @login_required
 def book_flight(request, flight_id):
     flight = Flight.objects.get(id=flight_id)
@@ -66,12 +71,14 @@ def book_flight(request, flight_id):
     return render(request, 'book_flight.html', {'flight': flight})
 
 
+# View user's bookings
 @login_required
 def my_bookings(request):
     bookings = Booking.objects.filter(user=request.user)
     return render(request, 'my_bookings.html', {'bookings': bookings})
 
 
+# Add flight view (Admin)
 @login_required
 @staff_member_required
 def add_flight(request):
@@ -82,6 +89,7 @@ def add_flight(request):
     return render(request, 'add_flight.html')
 
 
+# Remove flight view (Admin)
 @login_required
 @staff_member_required
 def remove_flight(request, flight_id):
@@ -90,6 +98,7 @@ def remove_flight(request, flight_id):
     return redirect('flight_search')
 
 
+# View flight bookings (Admin)
 @login_required
 @staff_member_required
 def view_bookings(request, flight_id):
@@ -98,6 +107,7 @@ def view_bookings(request, flight_id):
     return render(request, 'view_bookings.html', {'flight': flight, 'bookings': bookings})
 
 
+# User logout view
 def user_logout(request):
     logout(request)
     return redirect('login')
