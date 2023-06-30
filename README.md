@@ -59,6 +59,25 @@ This is a web application for flight ticket booking built with Django.
     ```bash
     python3 manage.py runserver
     ```
+
+6. Run the dockerfile:
+- Building the Docker image
+    ```bash
+    docker build -t flight-booking-app .
+    ```
+- Running the Docker image
+    ```bash
+    docker run -p 8080:8000 flight-booking-app
+    ```
+- Stop the running container
+    ```bash
+    docker stop <container_name>
+    ```
+- Remove the container
+    ```
+    docker rm <container_name>
+    ```
+
 ## Usage
 - To access the user interface, open a web browser and go to `http://localhost:8000`
 - To access the admin interface, go to `http://localhost:8000/admin` and log in with admin credentials.
