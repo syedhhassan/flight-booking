@@ -1,10 +1,36 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>Flight Search</h1>
-  <form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Search</button>
-  </form>
+  <h2>Flight Search Results</h2>
+  
+  {% if flights %}
+    <table>
+      <thead>
+        <tr>
+          <th>Flight Number</th>
+          <th>Departure City</th>
+          <th>Destination City</th>
+          <th>Departure Time</th>
+          <th>Arrival Time</th>
+          <th>Seat Count</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for flight in flights %}
+          <tr>
+            <td>{{ flight.flight_number }}</td>
+            <td>{{ flight.departure_city }}</td>
+            <td>{{ flight.destination_city }}</td>
+            <td>{{ flight.departure_time }}</td>
+            <td>{{ flight.arrival_time }}</td>
+            <td>{{ flight.seat_count }}</td>
+            <td><a href="{% url 'book_flight' flight.id %}">Book Now</a></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>No flights found for the selected criteria.</p>
+  {% endif %}
 {% endblock %}
