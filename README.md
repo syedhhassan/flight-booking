@@ -57,7 +57,7 @@ This is a web application for flight ticket booking built with Django.
 
 5. Run the development server:
     ```bash
-    python manage.py runserver
+    python3 manage.py runserver
     ```
 ## Usage
 - To access the user interface, open a web browser and go to `http://localhost:8000`
