@@ -47,14 +47,6 @@ def flight_search(request):
         form = FlightSearchForm()
     return render(request, 'flight_search.html', {'form': form})
 
-@login_required
-def flight_search_results(request):
-    form = FlightSearchForm(request.GET)
-    if form.is_valid():
-        date = form.cleaned_data['date']
-        flights = Flight.objects.filter(departure_time_date=date)
-        return render(request, 'flight_search_results.html', {'flight': flights})
-
 
 @login_required
 def book_flight(request, flight_id):
