@@ -41,11 +41,19 @@ def flight_search(request):
         if form.is_valid():
             date = form.cleaned_data['date']
             time = form.cleaned_data['time']
-            flights = Flight.objects.filter(departure_time__date=date, departure_time__time__gte=time)
+            flights = Flight.objects.filter(departure_time__date=date)
             return render(request, 'flight_search_results.html', {'flights': flights})
     else:
         form = FlightSearchForm()
     return render(request, 'flight_search.html', {'form': form})
+
+@login_required
+def flight_search_results(request):
+    form = FlightSearchForm(request.GET)
+    if form.is_valid():
+        date = form.cleaned_data['date']
+        flights = Flight.objects.filter(departure_time_date=date)
+        return render(request, 'flight_search_results.html', {'flight': flights})
 
 
 @login_required

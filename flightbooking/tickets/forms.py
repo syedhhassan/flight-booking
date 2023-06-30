@@ -17,7 +17,7 @@ class SignupForm(UserCreationForm):
 
 class FlightSearchForm(forms.Form):
     date = forms.DateField(widget=forms.DateInput(attrs={'placeholder': 'MM/DD/YYYY'}))
-    time = forms.TimeField(widget=forms.TimeInput(attrs={'placeholder': 'HH:MM'}))
+    time = forms.TimeField(widget=forms.TimeInput(attrs={'placeholder': 'HH:MM'}), required=False)
 
 
 class FlightForm(forms.ModelForm):
