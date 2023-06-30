@@ -81,6 +81,8 @@ This is a web application for flight ticket booking built with Django.
 ## Usage
 - To access the user interface, open a web browser and go to `http://localhost:8000`
 - To access the admin interface, go to `http://localhost:8000/admin` and log in with admin credentials.
-
+- Admin Credentials
+    #### username: admin
+    #### password: admin123
 
 
