@@ -7,7 +7,7 @@ from django.contrib.admin.views.decorators import staff_member_required
 
 # Home page view
 def home(request):
-    return render(request, 'base.html')
+    return render(request, 'home.html')
 
 # User login view
 def user_login(request):
